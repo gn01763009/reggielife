@@ -32,10 +32,6 @@ module.exports = {
         queryLimit: 1000, // Default to 100
         collectionTypes: [`project`,`job`],
         singleTypes: [`about`],
-        loginData: {
-          "identifier": "Reggie",
-          "password": "Gn789456"
-        }
       },
     },
     {
