@@ -4,9 +4,10 @@ import Image from "gatsby-image"
 import { FaShareSquare } from "react-icons/fa"
 
 const Project = ({ descript, title, url, stack, image }) => {
+  const {localFile:{childImageSharp:{fluid}}} = image;
   return (
     <article className="project">
-      <Image fluid={image.childImageSharp.fluid} className="project-img" />
+      <Image fluid={fluid} className="project-img" />
       <div className="project-info">
         <h3>{title}</h3>
         <p className="project-desc">

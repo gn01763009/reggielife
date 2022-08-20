@@ -4,6 +4,7 @@ FROM node:latest as build
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
+RUN npm install --platform=darwin --arch=arm64v8 sharp
 COPY . .
 RUN yarn global add gatsby-cli
 RUN gatsby build

@@ -10,11 +10,12 @@ const About = ({
   },
 }) => {
   const { image, info, stack, title } = nodes[0]
+  const {localFile:{childImageSharp:{fluid}}} = image;
   return (
     <Layout>
       <section className="about-page">
         <div className="section-center about-center">
-          <Image fluid={image.childImageSharp.fluid} className="about-img" />
+          <Image fluid={fluid} className="about-img" />
           <article className="about-text">
             <Title title={title}></Title>
             <p>{info}</p>
@@ -40,9 +41,11 @@ export const query = graphql`
         title
         info
         image {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }
