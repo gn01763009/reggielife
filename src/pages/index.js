@@ -8,7 +8,7 @@ import Projects from "../components/Projects"
 import TopNavbar from "../components/TopNavbar"
 export default ({ data }) => {
   const {
-    allStrapiProjects: { nodes: projects },
+    allStrapiProject: { nodes: projects },
   } = data
 
   return (
@@ -25,7 +25,7 @@ export default ({ data }) => {
 }
 export const query = graphql`
   {
-    allStrapiProjects(filter: { featured: { eq: true } }) {
+    allStrapiProject(filter: { featured: { eq: true } }) {
       nodes {
         descript {
           exp_descript
@@ -33,11 +33,13 @@ export const query = graphql`
         id
         url
         title
-        strapiId
+        strapi_id
         image {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
             }
           }
         }

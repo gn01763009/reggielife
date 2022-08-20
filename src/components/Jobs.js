@@ -6,13 +6,13 @@ import { Link } from "gatsby"
 
 const query = graphql`
   {
-    allStrapiJobs(sort: { fields: strapiId, order: ASC }) {
+    allStrapiJob(sort: { fields: strapi_id, order: ASC }) {
       nodes {
-        strapiId
+        strapi_id
         company
         date
         position
-        Description {
+        desc {
           id
           name
         }
@@ -24,10 +24,10 @@ const query = graphql`
 const Jobs = () => {
   const data = useStaticQuery(query)
   const {
-    allStrapiJobs: { nodes: jobs },
+    allStrapiJob: { nodes: jobs },
   } = data
   const [value, setValue] = React.useState(0)
-  const { company, position, date, Description } = jobs[value]
+  const { company, position, date, desc } = jobs[value]
   return (
     <section className="section jobs">
       <Title title="experience" />
@@ -37,7 +37,7 @@ const Jobs = () => {
           {jobs.map((item, index) => {
             return (
               <button
-                key={item.strapiId}
+                key={item.strapi_id}
                 onMouseOver={() => setValue(index)}
                 className={`job-btn ${index === value && "active-btn"}`}
               >
@@ -51,7 +51,7 @@ const Jobs = () => {
           <h3>{position}</h3>
           <h4>{company}</h4>
           <p className="job-date">{date}</p>
-          {Description.map(item => {
+          {desc.map(item => {
             return (
               <div key={item.id} className="job-desc">
                 <FaAngleDoubleRight className="job-icon" />

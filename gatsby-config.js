@@ -3,11 +3,12 @@
  *
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
+require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
     title: "Reggie Life",
-    description: "This my personal web",
+    description: "A Frontend developer",
     author: "@Reggie",
     siteUrl: "http://reggie.life",
   },
@@ -26,9 +27,10 @@ module.exports = {
     {
       resolve: `gatsby-source-strapi`,
       options: {
-        apiURL: `https://strapis.uc.r.appspot.com`,
+        apiURL: process.env.STRAPI_API_URL,
+        accessToken: process.env.STRAPI_TOKEN,
         queryLimit: 1000, // Default to 100
-        contentTypes: [`jobs`, `projects`],
+        collectionTypes: [`project`,`job`],
         singleTypes: [`about`],
       },
     },

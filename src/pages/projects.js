@@ -5,7 +5,7 @@ import Projects from "../components/Projects"
 
 const ProjectsPage = ({
   data: {
-    allStrapiProjects: { nodes: projects },
+    allStrapiProject: { nodes: projects },
   },
 }) => {
   return (
@@ -19,7 +19,7 @@ const ProjectsPage = ({
 
 export const query = graphql`
   {
-    allStrapiProjects {
+    allStrapiProject {
       nodes {
         descript {
           exp_descript
@@ -27,11 +27,13 @@ export const query = graphql`
         id
         url
         title
-        strapiId
+        strapi_id
         image {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
+          localFile {
+            childImageSharp {
+              fluid {
+                src
+              }
             }
           }
         }
